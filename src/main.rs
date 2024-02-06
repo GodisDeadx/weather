@@ -68,7 +68,6 @@ fn hide_console() {
 
 #[derive(Debug, Clone)]
 pub struct WeatherInfo {
-    use_celsius: bool,
     location: String,
     sunrise: String,
     sunset: String,
@@ -367,26 +366,49 @@ impl Application for Weather {
                 let est_sunrise_time = est_sunrise_datetime.format("%I:%M %p").to_string();
                 let est_sunset_time = est_sunset_datetime.format("%I:%M %p").to_string();
 
-                let sunrise_image_path = get_path("img\\sunrise.png");
-                let sunset_image_path = get_path("img\\sunset.png");
+                let mut sunrise_image_path = get_path("img/sunrise.png");
+                let mut sunset_image_path = get_path("img/sunset.png");
+                let mut temp_image_path = get_path("img/temp.png");
+                let mut dew_point_image_path = get_path("img/dew_point.png");
+                let mut humidity_image_path = get_path("img/humidity.png");
+                let mut wind_speed_image_path = get_path("img/wind_speed.png");
+                let mut wind_direction_image_path = get_path("img/wind_direction.png");
+                let mut air_quality_image_path = get_path("img/air_quality.png");
+                let mut air_pressure_image_path = get_path("img/air_pressure.png");
+                let mut precip_image_path = get_path("img/precipitation.png");
 
-                let temp_image_path = get_path("img\\temp.png");
-                let dew_point_image_path = get_path("img\\dew_point.png");
-                let humidity_image_path = get_path("img\\humidity.png");
-                let wind_speed_image_path = get_path("img\\wind_speed.png");
-                let wind_direction_image_path = get_path("img\\wind_direction.png");
-                let air_quality_image_path = get_path("img\\air_quality.png");
-                let air_pressure_image_path = get_path("img\\air_pressure.png");
-                let precip_image_path = get_path("img\\precipitation.png");
+                let mut cloudy_image_path = get_path("img/cloudy.png");
+                let mut partly_cloudy_image_path = get_path("img/partly_cloudy.png");
+                let mut sunny_image_path = get_path("img/sunny.png");
+                let mut fog_image_path = get_path("img/foggy.png");
+                let mut rain_image_path = get_path("img/rain.png");
+                let mut snow_image_path = get_path("img/snow.png");
+                let mut thunderstorm_image_path = get_path("img/thunderstorm.png");
+                let mut scattered_clouds_image_path = get_path("img/scattered_clouds.png");
 
-                let cloudy_image_path = get_path("img\\cloudy.png");
-                let partly_cloudy_image_path = get_path("img\\partly_cloudy.png");
-                let sunny_image_path = get_path("img\\sunny.png");
-                let fog_image_path = get_path("img\\foggy.png");
-                let rain_image_path = get_path("img\\rain.png");
-                let snow_image_path = get_path("img\\snow.png");
-                let thunderstorm_image_path = get_path("img\\thunder.png");
-                let scattered_clouds_image_path = get_path("img\\scattered_cloud.png");
+                #[cfg(target_os = "windows")]
+                {
+                    sunrise_image_path = get_path("img\\sunrise.png");
+                    sunset_image_path = get_path("img\\sunset.png");
+
+                    temp_image_path = get_path("img\\temp.png");
+                    dew_point_image_path = get_path("img\\dew_point.png");
+                    humidity_image_path = get_path("img\\humidity.png");
+                    wind_speed_image_path = get_path("img\\wind_speed.png");
+                    wind_direction_image_path = get_path("img\\wind_direction.png");
+                    air_quality_image_path = get_path("img\\air_quality.png");
+                    air_pressure_image_path = get_path("img\\air_pressure.png");
+                    precip_image_path = get_path("img\\precipitation.png");
+
+                    cloudy_image_path = get_path("img\\cloudy.png");
+                    partly_cloudy_image_path = get_path("img\\partly_cloudy.png");
+                    sunny_image_path = get_path("img\\sunny.png");
+                    fog_image_path = get_path("img\\foggy.png");
+                    rain_image_path = get_path("img\\rain.png");
+                    snow_image_path = get_path("img\\snow.png");
+                    thunderstorm_image_path = get_path("img\\thunder.png");
+                    scattered_clouds_image_path = get_path("img\\scattered_cloud.png");
+                }
 
                 let weather_image_path = match weather_info.weather.as_str() {
                     "Cloudy" => cloudy_image_path,
@@ -447,10 +469,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let sunset_container = Container::new(
                     Row::new()
@@ -464,10 +486,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut temp_container = Container::new(
                     Row::new()
@@ -479,16 +501,16 @@ impl Application for Weather {
                             } else {
                                 format!("Temperature: {:.2} °F", temperature as f32)
                             })
-                                .width(Length::Fill)
-                                .height(Length::Fill)
-                                .horizontal_alignment(alignment::Horizontal::Left)
-                                .vertical_alignment(alignment::Vertical::Center),
+                            .width(Length::Fill)
+                            .height(Length::Fill)
+                            .horizontal_alignment(alignment::Horizontal::Left)
+                            .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut weather_container = Container::new(
                     Row::new()
@@ -502,10 +524,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut feels_like_container = Container::new(
                     Row::new()
@@ -517,16 +539,16 @@ impl Application for Weather {
                             } else {
                                 format!("Feels Like: {:.2} °F", app_temp as f32)
                             })
-                                .width(Length::Fill)
-                                .height(Length::Fill)
-                                .horizontal_alignment(alignment::Horizontal::Left)
-                                .vertical_alignment(alignment::Vertical::Center),
+                            .width(Length::Fill)
+                            .height(Length::Fill)
+                            .horizontal_alignment(alignment::Horizontal::Left)
+                            .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut dew_point_container = Container::new(
                     Row::new()
@@ -538,16 +560,16 @@ impl Application for Weather {
                             } else {
                                 format!("Dew Point: {:.2} °F", dew_point as f32)
                             })
-                                .width(Length::Fill)
-                                .height(Length::Fill)
-                                .horizontal_alignment(alignment::Horizontal::Left)
-                                .vertical_alignment(alignment::Vertical::Center),
+                            .width(Length::Fill)
+                            .height(Length::Fill)
+                            .horizontal_alignment(alignment::Horizontal::Left)
+                            .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut precip_container = Container::new(
                     Row::new()
@@ -559,16 +581,16 @@ impl Application for Weather {
                             } else {
                                 format!("Precipitation: {:.2} in/hr", precip as f32)
                             })
-                                .width(Length::Fill)
-                                .height(Length::Fill)
-                                .horizontal_alignment(alignment::Horizontal::Left)
-                                .vertical_alignment(alignment::Vertical::Center),
+                            .width(Length::Fill)
+                            .height(Length::Fill)
+                            .horizontal_alignment(alignment::Horizontal::Left)
+                            .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut wind_speed_container = Container::new(
                     Row::new()
@@ -580,16 +602,16 @@ impl Application for Weather {
                             } else {
                                 format!("Wind Speed: {:.2} mph", wind_speed as f32)
                             })
-                                .width(Length::Fill)
-                                .height(Length::Fill)
-                                .horizontal_alignment(alignment::Horizontal::Left)
-                                .vertical_alignment(alignment::Vertical::Center),
+                            .width(Length::Fill)
+                            .height(Length::Fill)
+                            .horizontal_alignment(alignment::Horizontal::Left)
+                            .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let wind_dir_container = Container::new(
                     Row::new()
@@ -603,10 +625,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let mut air_pressure_container = Container::new(
                     Row::new()
@@ -620,10 +642,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let humidity_container = Container::new(
                     Row::new()
@@ -637,10 +659,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let air_quality_container = Container::new(
                     Row::new()
@@ -654,10 +676,10 @@ impl Application for Weather {
                                 .vertical_alignment(alignment::Vertical::Center),
                         ),
                 )
-                    .style(container_theme())
-                    .width(300)
-                    .height(50)
-                    .padding(5);
+                .style(container_theme())
+                .width(300)
+                .height(50)
+                .padding(5);
 
                 let sun_row =
                     row![sunrise_container, sunset_container, air_quality_container,].spacing(10);
@@ -673,7 +695,7 @@ impl Application for Weather {
                     wind_dir_container,
                     air_pressure_container
                 ]
-                    .spacing(10);
+                .spacing(10);
 
                 let first_row = Column::new().spacing(10).push(sun_row).push(temps_row);
 
@@ -709,7 +731,7 @@ impl Application for Weather {
             .spacing(10),],
             container(weather_text).width(Length::Fill).padding(5),
         ]
-            .padding(10);
+        .padding(10);
 
         let event = Container::new(
             Scrollable::new(event)
@@ -717,9 +739,9 @@ impl Application for Weather {
                 .width(Length::Fill)
                 .height(Length::Fill),
         )
-            .width(Length::Shrink)
-            .height(Length::Shrink)
-            .padding(10);
+        .width(Length::Shrink)
+        .height(Length::Shrink)
+        .padding(10);
 
         event.into()
     }
@@ -732,7 +754,10 @@ impl Application for Weather {
 fn main() {
     hide_console();
 
+    #[cfg(target_os = "windows")]
     let icon_path = get_path("img\\thunder.png");
+    #[cfg(not(target_os = "windows"))]
+    let icon_path = get_path("img/thunder.png");
     let icon = from_file(icon_path);
     let icon = match icon {
         Ok(icon) => icon,
