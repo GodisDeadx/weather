@@ -366,48 +366,46 @@ impl Application for Weather {
                 let est_sunrise_time = est_sunrise_datetime.format("%I:%M %p").to_string();
                 let est_sunset_time = est_sunset_datetime.format("%I:%M %p").to_string();
 
-                let mut sunrise_image_path = get_path("img/sunrise.png");
-                let mut sunset_image_path = get_path("img/sunset.png");
-                let mut temp_image_path = get_path("img/temp.png");
-                let mut dew_point_image_path = get_path("img/dew_point.png");
-                let mut humidity_image_path = get_path("img/humidity.png");
-                let mut wind_speed_image_path = get_path("img/wind_speed.png");
-                let mut wind_direction_image_path = get_path("img/wind_direction.png");
-                let mut air_quality_image_path = get_path("img/air_quality.png");
-                let mut air_pressure_image_path = get_path("img/air_pressure.png");
-                let mut precip_image_path = get_path("img/precipitation.png");
+                let mut sunrise_image_path =            get_path("img/sunrise.png");
+                let mut sunset_image_path =             get_path("img/sunset.png");
+                let mut temp_image_path =               get_path("img/temp.png");
+                let mut dew_point_image_path =          get_path("img/dew_point.png");
+                let mut humidity_image_path =           get_path("img/humidity.png");
+                let mut wind_speed_image_path =         get_path("img/wind_speed.png");
+                let mut wind_direction_image_path =     get_path("img/wind_direction.png");
+                let mut air_quality_image_path =        get_path("img/air_quality.png");
+                let mut air_pressure_image_path =       get_path("img/air_pressure.png");
+                let mut precip_image_path =             get_path("img/precipitation.png");
 
-                let mut cloudy_image_path = get_path("img/cloudy.png");
-                let mut partly_cloudy_image_path = get_path("img/partly_cloudy.png");
-                let mut sunny_image_path = get_path("img/sunny.png");
-                let mut fog_image_path = get_path("img/foggy.png");
-                let mut rain_image_path = get_path("img/rain.png");
-                let mut snow_image_path = get_path("img/snow.png");
-                let mut thunderstorm_image_path = get_path("img/thunderstorm.png");
-                let mut scattered_clouds_image_path = get_path("img/scattered_clouds.png");
+                let mut cloudy_image_path =             get_path("img/cloudy.png");
+                let mut partly_cloudy_image_path =      get_path("img/partly_cloudy.png");
+                let mut sunny_image_path =              get_path("img/sunny.png");
+                let mut fog_image_path =                get_path("img/foggy.png");
+                let mut rain_image_path =               get_path("img/rain.png");
+                let mut snow_image_path =               get_path("img/snow.png");
+                let mut thunderstorm_image_path =       get_path("img/thunderstorm.png");
+                let mut scattered_clouds_image_path =   get_path("img/scattered_clouds.png");
 
                 #[cfg(target_os = "windows")]
                 {
-                    sunrise_image_path = get_path("img\\sunrise.png");
-                    sunset_image_path = get_path("img\\sunset.png");
-
-                    temp_image_path = get_path("img\\temp.png");
-                    dew_point_image_path = get_path("img\\dew_point.png");
-                    humidity_image_path = get_path("img\\humidity.png");
-                    wind_speed_image_path = get_path("img\\wind_speed.png");
-                    wind_direction_image_path = get_path("img\\wind_direction.png");
-                    air_quality_image_path = get_path("img\\air_quality.png");
-                    air_pressure_image_path = get_path("img\\air_pressure.png");
-                    precip_image_path = get_path("img\\precipitation.png");
-
-                    cloudy_image_path = get_path("img\\cloudy.png");
-                    partly_cloudy_image_path = get_path("img\\partly_cloudy.png");
-                    sunny_image_path = get_path("img\\sunny.png");
-                    fog_image_path = get_path("img\\foggy.png");
-                    rain_image_path = get_path("img\\rain.png");
-                    snow_image_path = get_path("img\\snow.png");
-                    thunderstorm_image_path = get_path("img\\thunder.png");
-                    scattered_clouds_image_path = get_path("img\\scattered_cloud.png");
+                    sunrise_image_path =            get_path("img\\sunrise.png");
+                    sunset_image_path =             get_path("img\\sunset.png");
+                    temp_image_path =               get_path("img\\temp.png");
+                    dew_point_image_path =          get_path("img\\dew_point.png");
+                    humidity_image_path =           get_path("img\\humidity.png");
+                    wind_speed_image_path =         get_path("img\\wind_speed.png");
+                    wind_direction_image_path =     get_path("img\\wind_direction.png");
+                    air_quality_image_path =        get_path("img\\air_quality.png");
+                    air_pressure_image_path =       get_path("img\\air_pressure.png");
+                    precip_image_path =             get_path("img\\precipitation.png");
+                    cloudy_image_path =             get_path("img\\cloudy.png");
+                    partly_cloudy_image_path =      get_path("img\\partly_cloudy.png");
+                    sunny_image_path =              get_path("img\\sunny.png");
+                    fog_image_path =                get_path("img\\foggy.png");
+                    rain_image_path =               get_path("img\\rain.png");
+                    snow_image_path =               get_path("img\\snow.png");
+                    thunderstorm_image_path =       get_path("img\\thunder.png");
+                    scattered_clouds_image_path =   get_path("img\\scattered_cloud.png");
                 }
 
                 let weather_image_path = match weather_info.weather.as_str() {

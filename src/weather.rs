@@ -12,7 +12,7 @@ pub fn get_path(filename: &str) -> PathBuf {
     #[cfg(target_os = "linux")]
     path.push(".weather/");
     #[cfg(target_os = "windows")]
-    path.push(r"AppData\Local\.weather\");
+    path.push(r"AppData\Local\weather");
     path.push(filename);
     path
 }
